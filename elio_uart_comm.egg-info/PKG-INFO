@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: elio-uart-comm
+Version: 1.0
+Summary: elio board python interface
+Home-page: https://github.com/johnsnow-nam
+Author: elio robotics
+Author-email: caram88@mobilian.biz
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
