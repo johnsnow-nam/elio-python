@@ -8,23 +8,16 @@ CMD_EXECUTE = 0x01;
 
 class ElioProtocol(Protocol):
     packet = None
-
     def __init__(self):
         pass
-
-    # 연결 시작시 발생
     def connection_made(self, transport):
         self.transport = transport
         self.running = True
 
-
-    # 연결 종료시 발생
     def connection_lost(self, exc):
         self.transport = None
 
-    #데이터가 들어오면 이곳에서 처리함.
     def data_received(self, data, len):
-        #입력된 데이터와 키맵을 비교해서 있다면
         cmd = data[0];
         udp = data[1];
 
@@ -46,8 +39,6 @@ class ElioProtocol(Protocol):
         self.LINE1 = (data[14] | data[15] << 8) == 0 if 1 else 0;
         self.LINE2 = (data[16] | data[17] << 8) == 0 if 1 else 0;
 
-
-    # 데이터 보낼 때 함수
     def write(self,data, len):
         print(binascii.hexlify(data))
         self.transport.packet.send_packet(data, len)
@@ -56,7 +47,6 @@ class ElioProtocol(Protocol):
         # print(data)
         self.transport.write(data)
 
-    # 종료 체크
     def isDone(self):
         return self.running
 
@@ -67,7 +57,10 @@ class ElioProtocol(Protocol):
 
     def sendIO(self, which_io, value):
         print ('sendIO')
-        buffer = [-128 for i in range(10)]
+        buffer = [0 for i in range(15)]
+        buffer[0] = UDP;
+        buffer[1] = CMD_EXECUTE;
+
         if (which_io == "3V"):
             buffer[4] = value
         elif (which_io == "5V"):
@@ -80,22 +73,26 @@ class ElioProtocol(Protocol):
             buffer[8] = value
         elif (which_io == "IO4"):
             buffer[9] = value
-        self.send_command('M', buffer, 10);
+        self.write(bytearray(buffer), 4)
 
     def sendDC(self, dc1, dc2):
         print ('sendDC')
-        buffer = [-128 for i in range(10)]
-        buffer[0] = dc1;
-        buffer[1] = dc2;
+        buffer = [0 for i in range(15)]
+        buffer[0] = UDP;
+        buffer[1] = CMD_EXECUTE;
+        buffer[2] = dc1;
+        buffer[3] = dc2;
 
-        self.send_command('M', buffer, 10);
+        self.write(bytearray(buffer), 4)
 
     def sendServo(self, sv1, sv2):
         print ('sendServo')
-        buffer = [-128 for i in range(10)]
+        buffer = [0 for i in range(15)]
+        buffer[0] = UDP;
+        buffer[1] = CMD_EXECUTE;
         buffer[2] = sv1;
         buffer[3] = sv2;
-        self.send_command('M', buffer, 10)
+        self.write(bytearray(buffer), 4)
 
     def sendMotor(self):
         buffer = bytearray(15)
@@ -116,7 +113,7 @@ class ElioProtocol(Protocol):
         buffer[12] = 0;
         buffer[13] = 0;
         buffer[14] = 0;
-        self.write(buffer, 15)
+        self.write(bytearray(buffer), 15)
 
     def sendTXRX(self):
         buffer = bytearray(4)
@@ -124,4 +121,4 @@ class ElioProtocol(Protocol):
         buffer[1] = 0xf5;
         buffer[2] = 1;
         buffer[3] = 'a';
-        self.write(buffer, 4)
+        self.write(bytearray(buffer), 4)
