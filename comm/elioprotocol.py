@@ -76,8 +76,12 @@ class ElioProtocol(Protocol):
         self.LINE1 = (data[14] | data[15] << 8) == 0 if 1 else 0;
         self.LINE2 = (data[16] | data[17] << 8) == 0 if 1 else 0;
 
+        print ("dc1=",self.dc1, ", dc2=",self.dc2,", sv1=",self.sv1, ", sv2=",self.sv2,
+               ", io1=",self.io1, ", io2=",self.io2, ", io3=",self.io3, ", io4=",self.io4,
+               ", SONIC=",self.SONIC,", LINE1=",self.LINE1,", LINE2=",self.LINE2)
+
     def write(self,data, len):
-        print(binascii.hexlify(data))
+        # print(binascii.hexlify(data))
         self.transport.packet.send_packet(data, len)
 
     def write_packet(self, data):

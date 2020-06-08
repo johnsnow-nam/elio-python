@@ -13,7 +13,20 @@ if __name__ == "__main__":
     ser = serial.serial_for_url(PORT, baudrate=115200, timeout=1)
 
     with eliochannel(ser, ElioProtocol, packet_t) as p:
-        while p.isDone():
-            p.sendMotor();
-            time.sleep(3)
 
+        p.decideToUseSensor(1, 0, 0)
+        while p.isDone():
+            p.sendDC(50, 0)
+            time.sleep(1)
+            p.sendDC(0, 0)
+            time.sleep(1)
+
+            p.sendServo(50, 0)
+            time.sleep(1)
+            p.sendServo(0, 0)
+            time.sleep(1)
+
+            p.sendIO("IO4", 100)
+            time.sleep(1)
+            p.sendIO("IO4", 0)
+            time.sleep(1)

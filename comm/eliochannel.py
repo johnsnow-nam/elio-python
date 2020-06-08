@@ -1,6 +1,8 @@
 #-*- coding:utf-8 -*-
 import threading
 
+import serial
+
 
 class eliochannel(threading.Thread):
     """\
