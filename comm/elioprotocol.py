@@ -44,6 +44,8 @@ class ElioProtocol(Protocol):
         self.line1 = line1
         self.line2 = line2
 
+        self.sendDeviceData()
+
 
     def connection_made(self, transport):
         self.transport = transport
@@ -92,56 +94,35 @@ class ElioProtocol(Protocol):
 
     def sendIO(self, which_io, value):
         print ('sendIO')
-        buffer = [0 for i in range(15)]
-        buffer[0] = UDP;
-        buffer[1] = CMD_EXECUTE;
-
         if (which_io == "3V"):
             self.v3 = value
-            buffer[6] = value
         elif (which_io == "5V"):
             self.v5 = value
-            buffer[7] = value
         elif (which_io == "IO1"):
             self.io1 = value
-            buffer[8] = value
         elif (which_io == "IO2"):
             self.io2 = value
-            buffer[9] = value
         elif (which_io == "IO3"):
             self.io3= value
-            buffer[10] = value
         elif (which_io == "IO4"):
             self.io4= value
-            buffer[11] = value
 
+        self.sendDeviceData()
 
     def sendDC(self, dc1, dc2):
         print ('sendDC')
-
         self.dc1 = dc1
         self.dc2 = dc2
 
-        buffer = [0 for i in range(15)]
-        buffer[0] = UDP;
-        buffer[1] = CMD_EXECUTE;
-        buffer[2] = dc1;
-        buffer[3] = dc2;
-
-        self.write(bytearray(buffer), 4)
+        self.sendDeviceData()
 
     def sendServo(self, sv1, sv2):
         print ('sendServo')
         self.sv1 = sv1
         self.sv2 = sv2
-        buffer = [0 for i in range(15)]
-        buffer[0] = UDP;
-        buffer[1] = CMD_EXECUTE;
-        buffer[3] = sv1;
-        buffer[4] = sv2;
-        self.write(bytearray(buffer), 15)
+        self.sendDeviceData()
 
-    def sendMotor(self):
+    def sendDeviceData(self):
         buffer = bytearray(15)
         buffer[0] = UDP;
         buffer[1] = CMD_EXECUTE;
