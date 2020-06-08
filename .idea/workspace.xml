@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03d9a719-a2d7-4d49-b0bc-92cf99892336" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/eliochannel.py" beforeDir="false" afterPath="$PROJECT_DIR$/comm/eliochannel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comm/elioprotocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/comm/elioprotocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_elio.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello_elio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591575450788</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="funny">
+      <created>1591578183575</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591578183575</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,10 +204,10 @@
     <state x="-1031" y="198" key="#xdebugger.evaluate/-1920.0.1920.1080/0.23.1792.1045@-1920.0.1920.1080" timestamp="1591410773623" />
     <state x="815" y="506" key="#xdebugger.evaluate/0.0.1792.1120@0.0.1792.1120" timestamp="1591521343665" />
     <state x="815" y="495" key="#xdebugger.evaluate/0.23.1792.1045@0.23.1792.1045" timestamp="1591518372014" />
-    <state x="518" y="165" key="CommitChangelistDialog2" timestamp="1591575450689">
+    <state x="518" y="165" key="CommitChangelistDialog2" timestamp="1591578183476">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="518" y="165" key="CommitChangelistDialog2/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1591575450689" />
+    <state x="518" y="165" key="CommitChangelistDialog2/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1591578183476" />
     <state width="1792" height="455" key="DebuggerActiveHint" timestamp="1591426647150">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
