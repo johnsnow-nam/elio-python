@@ -6,6 +6,7 @@ from comm.protocol import Protocol
 UDP = 0x30;
 CMD_EXECUTE = 0x01;
 
+
 class ElioProtocol(Protocol):
     # __dc1 = None;
     # __dc2 = None;
